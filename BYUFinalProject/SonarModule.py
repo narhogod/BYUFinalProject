@@ -1,10 +1,14 @@
 #imported in Sonar.py - includes most of the game's functions
 
+
+#-------------#
 import random
 import sys
 import math
+#-------------#
 
 
+#------------------------------------------------------------------------------------------------#
 class SonarBoard:
     def getNewBoard(self):
         # Create a new 60x15 board data structure.
@@ -18,7 +22,10 @@ class SonarBoard:
                 else:
                     board[x].append('`')
         return board
+#------------------------------------------------------------------------------------------------#
 
+
+#------------------------------------------------------------------------------------------------#
     def drawBoard(self, board):
         # Draw the board data structure.
         tensDigitsLine = '    ' # Initial space for the numbers down the left side of the board
@@ -48,8 +55,12 @@ class SonarBoard:
         # Print the numbers across the bottom of the board.
         print()
         print('   ' + ('0123456789' * 6))
-        print(tensDigitsLine)
+        print(tensDigitsLine)  
+#------------------------------------------------------------------------------------------------#
 
+
+
+#--------------------------------------------------------------------------------------------#
     def getRandomChests(self, numChests):
         # Create a list of chest data structures (two-item lists of x, y int coordinates).
         chests = []
@@ -58,11 +69,19 @@ class SonarBoard:
             if newChest not in chests: # Make sure a chest is not already here.
                 chests.append(newChest)
         return chests
+#--------------------------------------------------------------------------------------------#
 
+
+  
+#------------------------------------------------------------------------------------#
     def isOnBoard(self, x, y):
         # Return True if the coordinates are on the board; otherwise, return False.
         return x >= 0 and x <= 59 and y >= 0 and y <= 14
+#------------------------------------------------------------------------------------#
 
+
+
+#--------------------------------------------------------------------------------------------------------------------------------------#
     def makeMove(self, board, chests, x, y):
         # Change the board data structure with a sonar device character. Remove treasure chests from the chests list as they are found.
         # Return False if this is an invalid move.
@@ -87,8 +106,11 @@ class SonarBoard:
             else:
                 board[x][y] = 'X'
                 print('Sonar did not detect anything. All treasure chests out of range.')
+#--------------------------------------------------------------------------------------------------------------------------------------#
 
 
+
+#--------------------------------------------------------------------------------------------------------------------------------------#
     def enterPlayerMove(self, previousMoves):
         # Let the player enter their move. Return a two-item list of int xy coordinates.
         print('Where do you want to drop the next sonar device? (0-59 0-14) (or type quit)')
@@ -106,7 +128,12 @@ class SonarBoard:
                 return [int(move[0]), int(move[1])]
 
             print('Enter a number from 0 to 59, a space, then a number from 0 to 14.')
+#--------------------------------------------------------------------------------------------------------------------------------------#
 
+
+
+
+#-------------------------------------------------------------------------------------------------------#
     def showInstructions(self):
         #prints instructions if the user requests it
         print('''Instructions:
@@ -154,3 +181,4 @@ class SonarBoard:
     sonar devices. Good luck!
     Press 'enter' to continue...''')
         input()
+#-------------------------------------------------------------------------------------------------------#
